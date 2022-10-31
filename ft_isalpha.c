@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 12:43:15 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/31 14:08:42 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/24 13:01:09 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:48:38 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_isalpha(int c)
 {
-	t_list	*next_node;
-
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{	
-		next_node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_node;
+	if ((c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'))
+	{
+		return (1);
 	}
-	lst = NULL;
+	return (0);
 }

@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/28 14:05:51 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/29 16:51:43 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/24 18:49:37 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:51:16 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char		*sub;
-	size_t		s_len;
-	size_t		sub_len;
-	size_t		i;
+	size_t	i;
+	size_t	needle_len;
 
-	s_len = ft_strlen(s);
-	sub_len = 0;
+	needle_len = ft_strlen((char *) needle);
+	if (needle_len == 0)
+		return ((char *) haystack);
 	i = 0;
-	while ((size_t) start + i < s_len && i < len)
+	if (len < needle_len || ft_strlen(haystack) < needle_len)
+		return (NULL);
+	while (i <= len - needle_len)
 	{
-		sub_len++;
+		if (ft_strncmp(haystack, needle, needle_len) == 0)
+			return ((char *) haystack);
 		i++;
+		haystack++;
 	}
-	sub = malloc((sub_len + 1) * sizeof(char));
-	ft_memcpy(sub, s + start, sub_len);
-	sub[i] = '\0';
-	return (sub);
+	return (NULL);
 }

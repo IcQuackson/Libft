@@ -1,18 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 14:47:54 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:51:35 by pedgonca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//delete include
-#include <stdio.h>
-
-#include <stdlib.h>
-
-static size_t	ft_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (*s++)
-		len++;
-	return (len);
-}
+#include "libft.h"
 
 static int	ft_is_in_set(char c, char const *set)
 {
@@ -43,24 +41,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (j >= i && ft_is_in_set(s1[j], set))
 		j--;
 	trimmed_len = j - i + 1;
-	if (trimmed_len == 0)
-		return (NULL);
 	trimmed = malloc((trimmed_len + 1) * sizeof(char));
 	if (trimmed == NULL)
 		return (NULL);
 	t_cpy = trimmed;
 	while (trimmed_len--)
 		*t_cpy++ = s1[i++];
+	*t_cpy = '\0';
 	return (trimmed);
-}
-
-int main()
-{
-	char *trimmed = ft_strtrim("abcadas-", "-das");
-	if (trimmed == NULL)
-		return (1);
-	printf("%s len=%ld\n", trimmed, ft_strlen(trimmed));
-
-	free(trimmed);
-	
 }

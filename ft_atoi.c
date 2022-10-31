@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 12:43:15 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/31 14:08:42 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/26 16:28:25 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:47:32 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_atoi(const char *nptr)
 {
-	t_list	*next_node;
+	int	n;
+	int	sign;
 
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{	
-		next_node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_node;
+	n = 0;
+	sign = 1;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
+		nptr++;
+	if (!(*nptr == '-' || *nptr == '+' || (*nptr >= '0' && *nptr <= '9')))
+		return (0);
+	if (*nptr == '-' || *nptr == '+')
+	{
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	lst = NULL;
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		n *= 10;
+		n += *nptr - '0';
+		nptr++;
+	}
+	return (n * sign);
 }

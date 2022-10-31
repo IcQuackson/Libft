@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 12:42:48 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/31 12:43:12 by pedgonca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <assert.h>
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!new || !lst)
 		return ;
@@ -12,7 +21,7 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-int main()
+/* int main()
 {
 	t_list **lst = malloc(5 * sizeof(t_list*));
 	int i;
@@ -67,7 +76,7 @@ int main()
 		i++;
 	}
 
-	/* for (i = 0; i < 6; i++)
+	for (i = 0; i < 6; i++)
 		free(lst[i]);
-	free(lst); */
-}
+	free(lst);
+} */

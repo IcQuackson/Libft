@@ -1,30 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 13:50:30 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:47:41 by pedgonca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static void	ft_bzero(void *s, unsigned int n)
+void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	char	*cpy;
+	void	*p;
 
-	cpy = s;
-	while (n > 0)
-	{
-		*cpy = 0;
-		cpy++;
-		n--;
-	}
-	return (s);
-}
-
-void *calloc(size_t nelem, size_t elsize)
-{
-	void* p;
-
-	/* allocate memory block */
 	p = malloc(nelem * elsize);
-	/* initialize memory block to zero */
 	if (p != NULL)
-	{
 		ft_bzero(p, nelem * elsize);
-	}
-	return p;
+	return (p);
 }

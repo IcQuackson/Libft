@@ -1,17 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/28 14:00:24 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:50:43 by pedgonca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static int ft_strlen(char *s)
-{
-	int	len;
-
-	len = 0;
-	while (*s++)
-		len++;
-	return (len);
-}
-
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*dup;
 	int		s_len;
@@ -29,17 +30,4 @@ char *ft_strdup(const char *s)
 	}
 	dup[i] = '\0';
 	return (dup);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	char str[] = "oh my god";
-	char *new = ft_strdup(str);
-	str[0] = 'b';
-	printf("%s\n", new);
-	printf("%s\n", str);
-
-	free(new);
 }

@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 12:43:15 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/31 14:08:42 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/26 17:43:30 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:45:10 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_list	*next_node;
+	size_t	i;
+	size_t	j;
 
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{	
-		next_node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_node;
+	i = 0;
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	while (src[j] && (i + j + 1) < size)
+	{
+		dst[i + j] = src[j];
+		j++;
 	}
-	lst = NULL;
+	if (i < size)
+		dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }

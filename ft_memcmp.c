@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 12:43:15 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/31 14:08:42 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/24 18:38:51 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:42:14 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	t_list	*next_node;
+	size_t			i;
+	const char		*s1;
+	const char		*s2;
 
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{	
-		next_node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_node;
-	}
-	lst = NULL;
+	s1 = str1;
+	s2 = str2;
+	i = 0;
+	while (i < n && s1[i] == s2[i])
+		i++;
+	if (i == n)
+		return (0);
+	return ((const unsigned char) s1[i] - (const unsigned char) s2[i]);
 }

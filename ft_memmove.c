@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pedgonca <pedgonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 12:43:15 by pedgonca          #+#    #+#             */
-/*   Updated: 2022/10/31 14:08:42 by pedgonca         ###   ########.fr       */
+/*   Created: 2022/10/24 15:35:13 by pedgonca          #+#    #+#             */
+/*   Updated: 2022/10/29 16:49:37 by pedgonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	*ft_memmove(void *dest, const void *src, unsigned int n)
 {
-	t_list	*next_node;
+	char			temp[1024];
+	char			*d;
+	const char		*s;
+	unsigned int	i;
 
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{	
-		next_node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next_node;
+	d = dest;
+	s = src;
+	i = 0;
+	while (i < n)
+	{
+		temp[i] = s[i];
+		i++;
 	}
-	lst = NULL;
+	i = 0;
+	while (i < n)
+	{
+		d[i] = temp[i];
+		i++;
+	}
+	return (dest);
 }
